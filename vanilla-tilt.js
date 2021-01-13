@@ -317,6 +317,23 @@ class VanillaTilt {
     this.updateCall = null;
   }
 
+  getStyle(oElm, css3Prop) {
+
+    var strValue = "";
+  
+    if (window.getComputedStyle) {
+      strValue = getComputedStyle(oElm).getPropertyValue(css3Prop);
+    }
+    //IE
+    else if (oElm.currentStyle) {
+      try {
+        strValue = oElm.currentStyle[css3Prop];
+      } catch (e) {}
+    }
+  
+    return strValue;
+  }
+
   /**
    * Appends the glare element (if glarePrerender equals false)
    * and sets the default style
@@ -349,7 +366,11 @@ class VanillaTilt {
       "width": "100%",
       "height": "100%",
       "overflow": "hidden",
-      "pointer-events": "none"
+      "pointer-events": "none",
+      "border-top-left-radius": this.getStyle(this.element, "border-top-left-radius"), 
+      "border-top-right-radius": this.getStyle(this.element, "border-top-right-radius"),
+      "border-bottom-left-radius": this.getStyle(this.element, "border-bottom-left-radius"),
+      "border-bottom-right-radius": this.getStyle(this.element, "border-bottom-right-radius"),
     });
 
     Object.assign(this.glareElement.style, {
