@@ -317,7 +317,7 @@ class VanillaTilt {
     this.updateCall = null;
   }
 
-  getStyle(oElm, css3Prop) {
+  _getStyle(oElm, css3Prop) {
 
     var strValue = "";
   
@@ -367,10 +367,10 @@ class VanillaTilt {
       "height": "100%",
       "overflow": "hidden",
       "pointer-events": "none",
-      "border-top-left-radius": this.getStyle(this.element, "border-top-left-radius"), 
-      "border-top-right-radius": this.getStyle(this.element, "border-top-right-radius"),
-      "border-bottom-left-radius": this.getStyle(this.element, "border-bottom-left-radius"),
-      "border-bottom-right-radius": this.getStyle(this.element, "border-bottom-right-radius"),
+      "border-top-left-radius": this._getStyle(this.element, "border-top-left-radius"), 
+      "border-top-right-radius": this._getStyle(this.element, "border-top-right-radius"),
+      "border-bottom-left-radius": this._getStyle(this.element, "border-bottom-left-radius"),
+      "border-bottom-right-radius": this._getStyle(this.element, "border-bottom-right-radius"),
     });
 
     Object.assign(this.glareElement.style, {
